@@ -1,0 +1,11 @@
+# Logs
+.pnpm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variable files
+.env
+
+# Vercel
+.vercel
