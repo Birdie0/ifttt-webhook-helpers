@@ -2,8 +2,9 @@ import type {VercelApiHandler} from '@vercel/node'
 import {request} from 'undici'
 
 const handler: VercelApiHandler = async (req, res) => {
-	let {text = ''} = req.body as {text: string}
-	const occurences = text.matchAll(/https:\/\/t\.co\/\w{10}/g)
+	let {text = '', domains = []} = req.body as {text: string; domains: string[]}
+	const domainsGroup = domains.map(d => d.replaceAll('.', '\\.')).join('|')
+	const occurences = text.matchAll(new RegExp(`https?://(?:${domainsGroup})/\\w+`, 'g'))
 
 	const toReplace = new Map<string, string>()
 	for (const [link] of occurences) {
