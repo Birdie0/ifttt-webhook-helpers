@@ -9,13 +9,15 @@
 		"lint:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"undici": "^6.21.0"
+		"jsdom": "^27.0.0",
+		"undici": "^7.16.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
 		"@total-typescript/tsconfig": "^1.0.4",
-		"@vercel/node": "^3.2.26",
-		"typescript": "~5.7.2"
+		"@types/jsdom": "^21.1.7",
+		"@vercel/node": "^5.3.22",
+		"typescript": "~5.9.2"
 	},
 	"engines": {
 		"node": "22.x"

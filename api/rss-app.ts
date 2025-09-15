@@ -1,5 +1,6 @@
 import type { VercelApiHandler } from '@vercel/node'
 import { request } from 'undici'
+import { modifyXml } from '../lib/modifyXml'
 
 const DOMAINS = ['t.co']
 
@@ -30,6 +31,8 @@ const handler: VercelApiHandler = async (req, res) => {
 	for (const [link, resolvedUrl] of toReplace) {
 		text = text.replaceAll(link, resolvedUrl)
 	}
+
+	text = modifyXml(text, 'enclosure')
 
 	res
 		.status(200)
