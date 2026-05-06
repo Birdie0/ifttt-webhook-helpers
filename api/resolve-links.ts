@@ -7,12 +7,12 @@ const handler: VercelApiHandler = async (req, res) => {
 		domains: string[]
 	}
 	const domainsGroup = domains.map((d) => d.replaceAll('.', '\\.')).join('|')
-	const occurences = text.matchAll(
+	const occurrences = text.matchAll(
 		new RegExp(`https?://(?:${domainsGroup})/\\w+`, 'g'),
 	)
 
 	const toReplace = new Map<string, string>()
-	for (const [link] of occurences) {
+	for (const [link] of occurrences) {
 		if (toReplace.has(link)) {
 			continue
 		}
